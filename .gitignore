@@ -7,6 +7,12 @@
 build/
 install/
 log/
+src/build/
+src/install/
+src/log/
+
+# Local package not part of this repository
+src/my_robot_controller/
 
 # Python temporary files
 __pycache__/
