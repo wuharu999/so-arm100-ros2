@@ -62,9 +62,22 @@ def generate_launch_description():
     )
 
     # 7) Launch in dependency order: model -> controller manager -> controllers.
+    arm_trajectory_publisher_node = TimerAction(
+        period=8.0,
+        actions=[
+            Node(
+                package='so_arm_control',
+                executable='arm_trajectory_publisher',
+                output='screen',
+            ),
+        ],
+    )
+
+    # 8) Launch in dependency order: model -> controller manager -> controllers -> trajectory publisher.
     return LaunchDescription([
         robot_state_publisher_node,
         ros2_control_node,
         joint_state_broadcaster_spawner,
         arm_controller_spawner,
+        arm_trajectory_publisher_node,
     ])
