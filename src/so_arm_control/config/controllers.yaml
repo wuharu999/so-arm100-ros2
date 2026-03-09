@@ -20,3 +20,5 @@ arm_controller:
     state_interfaces:
       - position
       - velocity
+
+# no parameters for joint_state_broadcaster becuase the joints are automatically detected from the robot description urdf file

@@ -29,6 +29,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            "arm_trajectory_publisher = so_arm_control.arm_trajectory_publisher:main",
         ],
     },
 )
