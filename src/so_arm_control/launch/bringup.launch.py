@@ -73,6 +73,13 @@ def generate_launch_description():
         ],
     )
 
+    # 8) Launch RViz for visualization.
+    rviz_node = Node(
+        package='rviz2',
+        executable='rviz2',
+        output='screen',
+    )
+
     # 8) Launch in dependency order: model -> controller manager -> controllers -> trajectory publisher.
     return LaunchDescription([
         robot_state_publisher_node,
@@ -80,4 +87,5 @@ def generate_launch_description():
         joint_state_broadcaster_spawner,
         arm_controller_spawner,
         arm_trajectory_publisher_node,
+        rviz_node,
     ])
