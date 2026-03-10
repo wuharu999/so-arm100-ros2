@@ -12,6 +12,7 @@ def generate_launch_description():
     control_pkg = get_package_share_directory('so_arm_control')
     urdf_path = os.path.join(desc_pkg, 'urdf', 'so101_new_calib_control.urdf')
     controllers_path = os.path.join(control_pkg, 'config', 'controllers.yaml')
+    rviz_config_path = os.path.join(desc_pkg, 'rviz', 'arm.rviz')
 
     # 2) Load URDF content into the `robot_description` parameter.
     with open(urdf_path, 'r') as infp:
@@ -78,6 +79,7 @@ def generate_launch_description():
         package='rviz2',
         executable='rviz2',
         output='screen',
+        arguments=['-d', rviz_config_path],
     )
 
     # 8) Launch in dependency order: model -> controller manager -> controllers -> trajectory publisher.

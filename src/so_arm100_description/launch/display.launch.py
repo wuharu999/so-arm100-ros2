@@ -8,6 +8,7 @@ def generate_launch_description():
     urdf_file = 'so101_new_calib.urdf'
     pkg_share = get_package_share_directory(pkg_name)
     urdf_path = os.path.join(pkg_share, 'urdf', urdf_file)
+    rviz_config_path = os.path.join(pkg_share, 'rviz', 'arm.rviz')
 
     with open(urdf_path, 'r') as infp:
         robot_desc = infp.read()
@@ -29,7 +30,7 @@ def generate_launch_description():
             package='rviz2',
             executable='rviz2',
             name='rviz2',
-            output='screen'
+            output='screen',
+            arguments=['-d', rviz_config_path],
         )
     ])
-
